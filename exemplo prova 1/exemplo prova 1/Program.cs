@@ -12,20 +12,20 @@ namespace exemplo_prova_1
         {
 
             int contador = 0;
-            int[] numero = new int[3];
+            int[] numero = new int[10];
             string continuar = "sim";
             while (continuar == "sim") {
-                while (contador < 3)
+                while (contador < 10)
                 {
                     Console.Write("Digite um numero: ");
                     numero[contador] = int.Parse(Console.ReadLine());
-
                     contador = contador + 1;
                 }
                 Console.WriteLine();
                 Console.WriteLine("Como deseja ordenar os numeros");
                 Console.Write("Digite \"1\" para ordenar de forma crescente ou digite \"-1\" para ordenar de forma decrescente: ");
                 int ordem = int.Parse(Console.ReadLine());
+                Console.WriteLine();
                 if (ordem == 1)
                 {
                     contador = 0;
@@ -77,14 +77,15 @@ namespace exemplo_prova_1
                 } else
                 {
                     Console.WriteLine("Número digitado errado");
-                    Console.Write("Deseja continuar Digite sim: ");
-                    continuar = Console.ReadLine();                    
                 }
+                contador = 0;
+                Console.WriteLine();
+                Console.Write("Deseja continuar Digite sim: ");
+                continuar = Console.ReadLine();
+                Console.Clear();
             }
             Console.Write("Fim programa");
             Console.ReadKey();
-
-
 
         }
     }

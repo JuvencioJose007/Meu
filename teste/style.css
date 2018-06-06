@@ -21,8 +21,8 @@ div.fundo_modal_on{
 }
 div#tela_confs{
     position: fixed;
-    width: 900px;
-    height: 550px;
+    width: 80%;
+    height: 85%;
     background-color: #fff;
     justify-content: center;
     flex-wrap: wrap; 
@@ -32,8 +32,8 @@ div#tela_confs{
 .fundo{
 	position: absolute;
     background-color: white;
-    width: 900px;
-    height: 550px;
+    width: 80%;
+    height: 85%;
     padding-bottom: 20px;
     padding-left: 20px;
     padding-top: 20px;
@@ -55,4 +55,9 @@ a.fechar {
     font-family: Arial;
     font-size: 20px;
     cursor: pointer;
+}
+.text{
+    text-align: center;
+    font: italic bold 30px Georgia, serif;
+    font-size: 3vw;
 }
