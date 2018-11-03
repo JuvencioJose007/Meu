@@ -1,3 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\juven\Downloads\Sistema\WorkSpace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2667304627.index
-\yum-poc\src

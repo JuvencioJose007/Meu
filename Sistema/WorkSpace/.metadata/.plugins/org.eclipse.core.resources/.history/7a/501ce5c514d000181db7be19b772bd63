@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="TesteCadastro">
-        <property name="context-root" value="TesteCadastro"/>
-        <property name="java-output-path" value="/TesteCadastro/build/classes"/>
-    </wb-module>
-</project-modules>
