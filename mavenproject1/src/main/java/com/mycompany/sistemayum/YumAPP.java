@@ -100,12 +100,19 @@ public class YumAPP extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean i;
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
         // TODO add your handling code here:
         YumConnection YP = new YumConnection();
+        if ("Play".equals(btnPlay.toString())){
+            btnPlay.setText("Pausar");
+        } else {
+            btnPlay.setText("Play");
+        }
+        i = !i;
+        System.out.println("i: "+i);
         boolean resultado = YP.logar(inpEmail.getText(), inpSenha.getText());
         lblMessage.setText(""+resultado);
-               
     }//GEN-LAST:event_btnPlayActionPerformed
 
     /**

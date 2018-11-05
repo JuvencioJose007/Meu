@@ -12,8 +12,8 @@ public class YumConnection {
     private final String connectionUrl
             = "jdbc:sqlserver://juvencio007.database.windows.net:1433; "
             + "database=Juvencio;"
-            + "user=;"
-            + "password=;"
+            + "user=juvenciojose;"
+            + "password=1Jo2se345;"
             + "encrypt=true;"
             + "trustServerCertificate=false;"
             + "hostNameInCertificate=*.database.windows.net;"
@@ -22,28 +22,36 @@ public class YumConnection {
     YumOshi yum = new YumOshi();
     private boolean resultado = false;
 
-    public Boolean enviarDados() {
+    private void enviarDados() {
+        YumAPP x = new YumAPP();
+        int y=0;
         try {
-            // cria um preparedStatement
-            Connection connection = DriverManager.getConnection(connectionUrl);
-            PreparedStatement stmt = connection.prepareStatement("insert into computadore (OS, HDTOTAL, RAMTOTAL, RAMDISPONIVEL) values (?, ?, ?, ?)");
+            System.out.println("x.i: "+x.i);
+            while (x.i) {
+                try {
+                    // cria um preparedStatement
+                    Connection connection = DriverManager.getConnection(connectionUrl);
+                    PreparedStatement stmt = connection.prepareStatement("insert into computador (OS, HDTOTAL, RAMTOTAL, RAMDISPONIVEL) values (?, ?, ?, ?);");
 
-            // preenche os valores
-            stmt.setString(1, yum.getSistemaOperacional());
-            stmt.setString(2, yum.getHdTotal());
-            stmt.setString(3, yum.getRamTotal());
-            stmt.setString(4, yum.getRamDisponivel());
-
-            // executa
-            stmt.execute();
-            stmt.close();
-
-            resultado = true;
-
+                    // preenche os valores
+                    stmt.setString(1, yum.getSistemaOperacional());
+                    stmt.setString(2, yum.getHdTotal());
+                    stmt.setString(3, yum.getRamTotal());
+                    stmt.setString(4, yum.getRamDisponivel());
+                    
+                    // executa
+                    stmt.execute();
+                    stmt.close();
+                    
+                    System.out.println("Foi um "+ y++);
+                } catch (SQLException e) {
+                    System.out.println("InsertException: " + e);
+                }
+                Thread.sleep(5000);
+            }
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("WhileException: " + e);
         }
-        return resultado;
     }
 
     public boolean logar(String email, String senha) {
@@ -55,17 +63,21 @@ public class YumConnection {
 
             Statement stmt;
             stmt = connection.createStatement();
-            //boolean results = stmt.execute(comando);
             ResultSet results = stmt.executeQuery(comando);
-            if(results.next()){
+            while (results.next()) {
                 resultado = true;
             }
+            results.close();
             stmt.close();
             System.out.println("result: " + results);
+            System.out.println("resultado: "+ resultado);
+            if (resultado) {
+                enviarDados();
+            }
 
             //resultado = results;
         } catch (SQLException ex) {
-            System.out.println("Exception: " + ex);
+            System.out.println("SelectException: " + ex);
         }
         return resultado;
     }
