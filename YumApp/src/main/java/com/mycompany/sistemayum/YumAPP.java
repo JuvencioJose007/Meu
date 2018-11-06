@@ -5,9 +5,11 @@
  */
 package com.mycompany.sistemayum;
 
+import javax.swing.ImageIcon;
+
 /**
  *
- * @author juven
+ * @author juvencio
  */
 public class YumAPP extends javax.swing.JFrame {
 
@@ -34,9 +36,9 @@ public class YumAPP extends javax.swing.JFrame {
         inpSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(399, 300));
 
         lblMessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMessage.setText("ID");
 
         btnPlay.setText("Play");
         btnPlay.addActionListener(new java.awt.event.ActionListener() {
@@ -101,20 +103,34 @@ public class YumAPP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public boolean i;
+        
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
         // TODO add your handling code here:
         YumConnection YP = new YumConnection();
-        if ("Play".equals(btnPlay.toString())){
+        if ("Play".equals(btnPlay.getText())){
             btnPlay.setText("Pausar");
+            inpEmail.enable(true);
+            inpSenha.enable(true);
+            imgPlay();
         } else {
             btnPlay.setText("Play");
+            inpEmail.enable(false);
+            inpSenha.enable(false);
         }
         i = !i;
         System.out.println("i: "+i);
         boolean resultado = YP.logar(inpEmail.getText(), inpSenha.getText());
         lblMessage.setText(""+resultado);
     }//GEN-LAST:event_btnPlayActionPerformed
-
+    
+    private void imgPlay(){
+        System.out.println("Entrou!");
+        ImageIcon img;
+        img = new ImageIcon(getClass().getResource("play.png"));
+//        btnPlay.setIcon(img);
+        lblMessage.setIcon(img);
+    }
+    
     /**
      * @param args the command line arguments
      */
